@@ -1,12 +1,13 @@
 ---
 - name: Check Python version on remote machine
-  hosts: all      # Replace with your host or group name
+  hosts: all     # or your host/group name
   gather_facts: false
   tasks:
     - name: Get Python version
       shell: python --version 2>&1
       register: python_version_output
+      check_mode: no        # Force the command to run even in check mode
 
     - name: Display Python version
       debug:
-        msg: "Python version: {{ python_version_output.stdout }}"
+        msg: "Python version: {{ python_version_output.stdout | default('Not available') }}"
