@@ -1,0 +1,12 @@
+---
+- name: Check Python version on remote machine
+  hosts: all      # Replace with your host or group name
+  gather_facts: false
+  tasks:
+    - name: Get Python version
+      shell: python --version 2>&1
+      register: python_version_output
+
+    - name: Display Python version
+      debug:
+        msg: "Python version: {{ python_version_output.stdout }}"
