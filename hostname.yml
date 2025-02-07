@@ -6,6 +6,7 @@
     - name: Get hostname
       command: hostname
       register: hostname_output
+      when: true  # Ensure it always runs
 
     - name: Show hostname
       debug:
