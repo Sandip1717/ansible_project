@@ -1,6 +1,6 @@
 ---
 - name: Get hostname of remote machine
-  hosts: remote_host
+  hosts: all
   gather_facts: false
   tasks:
     - name: Get hostname
